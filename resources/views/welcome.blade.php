@@ -236,25 +236,45 @@
 
 
                             <div class="ml-3 agent-chat">
-                                <div id="msg10" class="bg-gray-200 p-3 rounded-lg shadow-xs mt-2 w-fit hidden">
-                                    <p class="text-md text-gray-800">Are you on Medicaid or Medicare?</p>
-                                </div>
-                                <div id="msg11" class="bg-gray-200 p-3 rounded-lg shadow-xs mt-2 w-fit hidden">
-                                    <div class="grid grid-rows-3 grid-cols-1 gap-y-3">
-                                        <button
-                                            class="chat-button text-white font-bold bg-blue-500 rounded-full py-3 px-8 funnel-complete-btn"
-                                            type="button" data-form-step="3" data-form-value="No">Neither</button>
-                                        <button
-                                            class="chat-button text-white font-bold bg-blue-500 rounded-full py-3 px-8"
-                                            type="button" data-form-step="3"
-                                            data-form-value="Medicaid">Medicaid</button>
-                                        <button
-                                            class="chat-button text-white font-bold bg-blue-500 rounded-full py-3 px-8 funnel-complete-btn"
-                                            type="button" data-form-step="3"
-                                            data-form-value="Medicare">Medicare</button>
-                                    </div>
-                                </div>
-                            </div>
+    <div id="msg10" class="bg-gray-200 p-3 rounded-lg shadow-xs mt-2 w-fit hidden">
+        <p class="text-md text-gray-800">Are you on Medicaid or Medicare?</p>
+    </div>
+    <div id="msg11" class="bg-gray-200 p-3 rounded-lg shadow-xs mt-2 w-fit hidden">
+        <div class="grid grid-rows-3 grid-cols-1 gap-y-3">
+            <button
+                class="chat-button text-white font-bold bg-blue-500 rounded-full py-3 px-8 funnel-complete-btn"
+                type="button" data-form-step="3" data-form-value="No">Neither</button>
+            <button
+                class="chat-button text-white font-bold bg-blue-500 rounded-full py-3 px-8"
+                type="button" data-form-step="3" data-form-value="Medicaid" id="medicaid-btn">Medicaid</button>
+            <button
+                class="chat-button text-white font-bold bg-blue-500 rounded-full py-3 px-8 funnel-complete-btn"
+                type="button" data-form-step="3" data-form-value="Medicare" id="medicare-btn">Medicare</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const medicaidButton = document.getElementById("medicaid-btn");
+        const medicareButton = document.getElementById("medicare-btn");
+
+        function rejectUser(reason) {
+            alert(`We're sorry, but we cannot proceed because you selected ${reason}.`);
+            // Optionally redirect the user
+            window.location.href = "/rejection-page"; // Replace with your rejection page URL
+        }
+
+        medicaidButton.addEventListener("click", function () {
+            rejectUser("Medicaid");
+        });
+
+        medicareButton.addEventListener("click", function () {
+            rejectUser("Medicare");
+        });
+    });
+</script>
+
 
 
                         </div>
